@@ -74,7 +74,13 @@ while cap.isOpened():
         if best_match_index != -1 and matches[best_match_index] and face_distances[best_match_index] < 0.5:
             name = known_face_names[best_match_index]
 
-        color = (0, 255, 0) if name != "Unmatched" else (0, 0, 255)
+        print(f"Detected: {name}")
+
+        if name.lower() == "subiksha":  # Replace with your actual name from the file
+            color = (0, 255, 0)  # Green box for your face
+        else:
+            color = (0, 0, 255)  # Red box for others/unmatched
+
         cv2.rectangle(frame, (left, top), (right, bottom), color, 2)
         cv2.putText(frame, name, (left, top - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2, cv2.LINE_AA)
 
